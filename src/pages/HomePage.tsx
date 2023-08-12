@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import SearchBar from "../components/SearchBar";
 import WeatherCard from "../components/WeatherCard";
 import CurrentWeather from "../components/CurrentWeather";
 import { BASE_URL } from "../constants/urls";
@@ -47,21 +46,8 @@ const HomePage: React.FC = () => {
     handleGeolocation();
   }, []);
 
-  const getBackgroundClass = (weatherCondition: string) => {
-    if (weatherCondition.includes("cloudy")) {
-      return styles.cloudy;
-    } else if (weatherCondition.includes("sunny")) {
-      return styles.sunny;
-    } else if (weatherCondition.includes("Clear")) {
-      return styles.clear;
-    } else if (weatherCondition.includes("rain")) {
-      return styles.rainy;
-    }
-  };
-
   return (
-    <div className={`${getBackgroundClass("Moderate rain")}`}>
-      <SearchBar />
+    <div>
       <CurrentWeather />
       <Typography>6 DAY FORECAST</Typography>
       <Link to="/details" className={styles.link}>

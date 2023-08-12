@@ -7,12 +7,10 @@ const WeatherCard = ({
   highTemp,
   lowTemp,
   precipitation,
+  expandedText,
+  toggleExpand,
 }: any) => {
-  const [expanded, setExpanded] = useState(false);
-
-  const toggleExpand = () => {
-    setExpanded(!expanded);
-  };
+  const expanded = expandedText === header;
 
   return (
     <li
@@ -21,7 +19,7 @@ const WeatherCard = ({
         marginRight: "8px",
         background: "rgba(255, 255, 255, 0.03)",
       }}
-      onClick={toggleExpand}
+      onClick={() => toggleExpand(header)}
     >
       <Button style={{ width: "147px", height: expanded ? "150px" : "auto" }}>
         <span>
@@ -71,34 +69,48 @@ const WeatherCard = ({
   );
 };
 
-const WeatherCardList = () => (
-  <ul
-    style={{
-      height: "120px",
-      transform: "translate3d(0px, 0px, 0px)",
-      transition: "all 0s ease 0s",
-    }}
-  >
-    <WeatherCard
-      header="today"
-      iconSrc="https://assets.msn.com/weathermapdata/1/static/weather/Icons/taskbar_v10/Condition_Card/MostlySunnyDay.svg"
-      highTemp="31"
-      lowTemp="27"
-      precipitation="12"
-    />
-    <WeatherCard
-      header="Sun 13"
-      iconSrc="https://assets.msn.com/weathermapdata/1/static/weather/Icons/taskbar_v10/Condition_Card/D210LightRainShowersV2.svg"
-      highTemp="31"
-      lowTemp="27"
-    />
-    <WeatherCard
-      header="Mon 14"
-      iconSrc="https://assets.msn.com/weathermapdata/1/static/weather/Icons/taskbar_v10/Condition_Card/D210LightRainShowersV2.svg"
-      highTemp="32"
-      lowTemp="26"
-    />
-  </ul>
-);
+const WeatherCardList = () => {
+  const [expanded, setExpanded] = useState("today");
+
+  const toggleExpand = (text: string) => {
+    setExpanded(text);
+  };
+
+  return (
+    <ul
+      style={{
+        height: "120px",
+        transform: "translate3d(0px, 0px, 0px)",
+        transition: "all 0s ease 0s",
+      }}
+    >
+      <WeatherCard
+        header="today"
+        iconSrc="https://assets.msn.com/weathermapdata/1/static/weather/Icons/taskbar_v10/Condition_Card/MostlySunnyDay.svg"
+        highTemp="31"
+        lowTemp="27"
+        precipitation="12"
+        expandedText={expanded}
+        toggleExpand={toggleExpand}
+      />
+      <WeatherCard
+        header="Sun 13"
+        iconSrc="https://assets.msn.com/weathermapdata/1/static/weather/Icons/taskbar_v10/Condition_Card/D210LightRainShowersV2.svg"
+        highTemp="31"
+        lowTemp="27"
+        expandedText={expanded}
+        toggleExpand={toggleExpand}
+      />
+      <WeatherCard
+        header="Mon 14"
+        iconSrc="https://assets.msn.com/weathermapdata/1/static/weather/Icons/taskbar_v10/Condition_Card/D210LightRainShowersV2.svg"
+        highTemp="32"
+        lowTemp="26"
+        expandedText={expanded}
+        toggleExpand={toggleExpand}
+      />
+    </ul>
+  );
+};
 
 export default WeatherCardList;

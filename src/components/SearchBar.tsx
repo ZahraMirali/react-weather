@@ -4,15 +4,19 @@ import debounce from "lodash.debounce";
 import { useState } from "react";
 import { FORECAST_URL } from "../constants/urls";
 import { useDispatch } from "react-redux";
+import styles from "./SearchBar.module.css";
 
-export default function App() {
+export default function SearchBar() {
   const dispatch = useDispatch();
   const [options, setOptions] = useState([]);
 
   async function handleSearch(value: any) {
     console.log("handleSearch", value);
 
-    if (!value) return;
+    if (!value) {
+      setOptions([]);
+      return;
+    }
 
     try {
       const response = await axios.get("search.json", { params: { q: value } });
@@ -46,13 +50,12 @@ export default function App() {
 
   return (
     <AutoComplete
-      style={{ width: 200 }}
+      className={styles.autocomplete}
       onSelect={handleSelect}
       onSearch={debouncedSearch}
-      placeholder="input here"
+      placeholder="Search city..."
       options={options}
       allowClear
-      filterOption={false}
     />
   );
 }
