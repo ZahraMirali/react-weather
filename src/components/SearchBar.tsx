@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import styles from "./SearchBar.module.css";
 
 export default function SearchBar() {
+  const [searchValue, setSearchValue] = useState<string>("");
   const dispatch = useDispatch();
   const [options, setOptions] = useState([]);
 
@@ -31,6 +32,7 @@ export default function SearchBar() {
   }
 
   async function handleSelect(event: any, option: any) {
+    setSearchValue(option.value);
     console.log("handleSelect", option);
 
     try {
@@ -50,12 +52,15 @@ export default function SearchBar() {
 
   return (
     <AutoComplete
+      value={searchValue}
+      onChange={setSearchValue}
       className={styles.autocomplete}
       onSelect={handleSelect}
       onSearch={debouncedSearch}
       placeholder="Search city..."
       options={options}
       allowClear
+      notFoundContent={searchValue ? "No results found" : null}
     />
   );
 }
