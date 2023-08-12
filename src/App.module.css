@@ -1,0 +1,9 @@
+.appContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.appTitle {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
