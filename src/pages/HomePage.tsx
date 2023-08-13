@@ -17,7 +17,10 @@ const HomePage: React.FC = () => {
       <Typography>
         {weatherData.location.name}, {weatherData.location.country}
       </Typography>
-      <CurrentWeather data={weatherData.forecast.forecastday[0]} />
+      <CurrentWeather
+        data={weatherData.forecast.forecastday[0]}
+        feelslike_c={weatherData.current.feelslike_c}
+      />
       <Space align="center">
         <Typography>6 DAY FORECAST</Typography>
         <Link to="/details" className={styles.link}>

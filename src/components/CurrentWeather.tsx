@@ -1,7 +1,7 @@
 import { Card, Row, Col, Space } from "antd";
 import styles from "./CurrentWeather.module.css";
 
-const CurrentWeather = ({ data }: any) => {
+const CurrentWeather = ({ data, feelslike_c }: any) => {
   const todayForecast = data.day;
 
   return (
@@ -19,8 +19,12 @@ const CurrentWeather = ({ data }: any) => {
             src={todayForecast.condition.icon}
           />
           <div>
-            <span className={styles.avgTemp}>{todayForecast.avgtemp_c}<sup> °C</sup></span>
+            <span className={styles.avgTemp}>
+              {todayForecast.avgtemp_c}
+              <sup> °C</sup>
+            </span>
             <span>{todayForecast.condition.text}</span>
+            <span>Feels like {feelslike_c} °C</span>
           </div>
         </Space>
       </Space>
