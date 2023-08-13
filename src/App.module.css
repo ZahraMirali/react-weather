@@ -1,7 +1,8 @@
 .layout {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(rgb(36, 84, 148) 0%, rgb(28, 68, 132) 100%);
+  background: transparent !important;
+  /*background: linear-gradient(rgb(36, 84, 148) 0%, rgb(28, 68, 132) 100%);*/
   height: 100vh;
 }
 

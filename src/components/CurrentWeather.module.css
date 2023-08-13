@@ -1,0 +1,9 @@
+.currentWeatherCard {
+    /*background: rgba(78, 129, 255, 0.78) linear-gradient(to right, rgb(149 88 88 / 15%), rgba(180, 180, 180, 0.38)) !important;*/
+   background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(245, 245, 245, 0.16) !important;
+
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px;
+}

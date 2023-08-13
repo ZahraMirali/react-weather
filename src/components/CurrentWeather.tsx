@@ -1,8 +1,9 @@
 import { Card, Row, Col, Statistic, Typography, Space } from "antd";
+import styles from "./CurrentWeather.module.css";
 
 const WeatherCard = () => {
   return (
-    <Card>
+    <Card className={styles.currentWeatherCard}>
       <Space direction="vertical">
         <div>
           <div>Current weather</div>
