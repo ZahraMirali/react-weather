@@ -14,7 +14,7 @@ const WeatherDetailsPage: React.FC = () => {
   return (
     <Space direction="vertical" style={{ display: "flex" }}>
       {data.map(({ date, day }) => (
-        <Card className={styles.currentWeatherCard}>
+        <Card key={date} className={styles.currentWeatherCard}>
           <span>{date}</span>
           <Divider />
           <Row justify="space-between">

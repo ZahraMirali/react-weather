@@ -18,6 +18,7 @@ const WeatherList = ({ data }: WeatherListProps) => {
     <Space style={{ overflowX: "auto", display: "flex", borderRadius: "6px" }}>
       {data.map((item) => (
         <WeatherCard
+          key={item.date}
           header={item.date}
           iconSrc={item.day.condition.icon}
           highTemp="31"
