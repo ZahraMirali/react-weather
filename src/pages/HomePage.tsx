@@ -11,6 +11,7 @@ import { selectData } from "../store/weather/selectors";
 
 const HomePage: React.FC = () => {
   const weatherData = useSelector(selectData);
+  if (!weatherData) return null;
 
   return (
     <Space direction="vertical">
@@ -20,6 +21,7 @@ const HomePage: React.FC = () => {
       <CurrentWeather
         data={weatherData.forecast.forecastday[0]}
         feelslike_c={weatherData.current.feelslike_c}
+        pressure_mb={weatherData.current.pressure_mb}
       />
       <Space align="center">
         <Typography>6 DAY FORECAST</Typography>

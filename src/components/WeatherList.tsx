@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { Space } from "antd";
 import WeatherCard from "./WeatherCard";
+import { ForecastDay } from "../types/weather";
 
-const WeatherList = ({ data }: any) => {
+interface WeatherListProps {
+  data: ForecastDay[];
+}
+
+const WeatherList = ({ data }: WeatherListProps) => {
   const [expanded, setExpanded] = useState(data[0].date);
 
   const toggleExpand = (text: string) => {
@@ -11,7 +16,7 @@ const WeatherList = ({ data }: any) => {
 
   return (
     <Space>
-      {data.map((item: any) => (
+      {data.map((item) => (
         <WeatherCard
           header={item.date}
           iconSrc={item.day.condition.icon}

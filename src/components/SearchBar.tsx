@@ -3,12 +3,17 @@ import axios from "axios";
 import debounce from "lodash.debounce";
 import { useState } from "react";
 import styles from "./SearchBar.module.css";
+import { LocationInfo, LocationOption } from "../types/location";
 
-export default function SearchBar({ onSubmit }: any) {
+interface SearchBarProps {
+  onSubmit: (q: string) => void;
+}
+
+export default function SearchBar({ onSubmit }: SearchBarProps) {
   const [searchValue, setSearchValue] = useState<string>("");
   const [options, setOptions] = useState([]);
 
-  async function handleSearch(value: any) {
+  async function handleSearch(value: string) {
     if (!value) {
       setOptions([]);
       return;
@@ -16,19 +21,20 @@ export default function SearchBar({ onSubmit }: any) {
 
     try {
       const response = await axios.get("search.json", { params: { q: value } });
-      const formattedSuggestions = response.data.map((location: any) => ({
-        value: `${location.name}, ${location.country}`,
-        coords: `${location.lat}, ${location.lon}`,
-      }));
+      const formattedSuggestions = response.data.map(
+        (location: LocationInfo) => ({
+          value: `${location.name}, ${location.country}`,
+          coords: `${location.lat}, ${location.lon}`,
+        })
+      );
       setOptions(formattedSuggestions);
     } catch (error) {
       console.error("Error fetching suggestions:", error);
     }
   }
 
-  async function handleSelect(event: any, option: any) {
+  async function handleSelect(_: string, option: LocationOption) {
     setSearchValue(option.value);
-    console.log("handleSelect", option);
     onSubmit(option.coords);
   }
 
