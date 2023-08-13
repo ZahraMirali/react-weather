@@ -1,19 +1,47 @@
 .weatherCard {
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .link {
-  margin-top: 20px;
-  display: inline-block;
-  color: #1890ff;
-  font-weight: bold;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: color 0.3s ease-in-out;
+    margin-top: 20px;
+    display: inline-block;
+    color: #1890ff;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
 }
 
 .link:hover {
-  color: #0050b3;
+    color: #0050b3;
+}
+
+.btn {
+    min-width: 150px;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: transparent;
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: transparent !important;
+}
+
+.btnActive, .btnActive:hover {
+    min-width: 150px;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: transparent !important;
+    color: #ffffff !important;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.expandBox{
+    line-height: 2;
+    margin: auto;
 }
