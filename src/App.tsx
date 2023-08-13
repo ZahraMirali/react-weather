@@ -2,14 +2,15 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import WeatherDetailsPage from "./pages/WeatherDetailsPage";
 import styles from "./App.module.css";
-import { Alert, Layout } from "antd";
+import { Alert, Button, Layout, Space, Spin } from "antd";
 import SearchBar from "./components/SearchBar";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL, FORECAST_URL } from "./constants/urls";
 import axios from "axios";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { setWeatherData, setLoading, setError } from "./store/weather/actions";
+import { selectError, selectLoading, selectWeatherData } from "./store/weather/selectors";
 
 const { Header, Content } = Layout;
 
@@ -20,15 +21,15 @@ axios.defaults.params = {
 
 function App() {
   const dispatch = useDispatch();
+  const weatherData = useSelector(selectWeatherData);
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
 
   const handleGeolocation = () => {
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         const { latitude, longitude } = position.coords;
         await getForecast(`${latitude},${longitude}`);
-      },
-      () => {
-        dispatch(setError("Error getting geolocation"));
       }
     );
   };
@@ -74,11 +75,18 @@ function App() {
               />
             }
           >
-            <Routes>
+            {error ? <Alert message={error} type="error" /> : !weatherData ? <Alert
+              message="Request Geolocation"
+              description="To provide you with better service, please enable geolocation."
+              type="info"
+            /> : <Routes>
               <Route path="/details" element={<WeatherDetailsPage />} />
               <Route path="/" element={<HomePage />} />
-            </Routes>
+            </Routes>}
           </ErrorBoundary>
+          {loading && <div className="loading-overlay">
+              <Spin size="large" />
+            </div>}
         </Content>
       </Layout>
     </BrowserRouter>
