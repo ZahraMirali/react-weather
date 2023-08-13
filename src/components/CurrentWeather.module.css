@@ -18,7 +18,19 @@
     color: white;
     border-radius: 0.625rem;
     padding: 0.625rem;
-    margin-top: 1.25rem;
+}
+
+.currentWeatherLabelAndDateBox {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.currentWeatherLabelAndDateBox .currentWeatherLabel {
+    font-weight: bold;
+}
+.currentWeatherLabelAndDateBox .currentDate {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .summaryBox {

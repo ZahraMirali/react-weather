@@ -7,10 +7,10 @@ const CurrentWeather = ({ data, feelslike_c, pressure_mb }: any) => {
   return (
     <Card className={styles.currentWeatherCard}>
       <Space direction="vertical">
-        <Space>
-          Today
-          {data.date}
-        </Space>
+        <div className={styles.currentWeatherLabelAndDateBox}>
+          <span className={styles.currentWeatherLabel}>Current weather</span>
+          <span className={styles.currentDate}>{data.date}</span>
+        </div>
         <Space>
           <img
             width={96}

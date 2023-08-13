@@ -11,9 +11,9 @@ import axios from "axios";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { fetchForecastWeather } from "./store/weather/weatherSlice";
 import {
+  selectData,
   selectError,
   selectLoading,
-  selectData,
 } from "./store/weather/selectors";
 import { AppDispatch } from "./store/store";
 
@@ -47,11 +47,12 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Header className={styles.header}>
+        <h1 className={styles.title}>Weather App</h1>
+        <SearchBar onSubmit={getForecastWeather} />
+      </Header>
+
       <Layout className={styles.layout}>
-        <Header className={styles.header}>
-          <h1 className={styles.title}>Weather App</h1>
-          <SearchBar onSubmit={getForecastWeather} />
-        </Header>
         <Content>
           <ErrorBoundary
             fallback={

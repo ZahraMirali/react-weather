@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Button, Space } from "antd";
 import styles from "./WeatherCard.module.css";
 

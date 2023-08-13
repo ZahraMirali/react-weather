@@ -1,13 +1,12 @@
 import React from "react";
 import WeatherList from "../components/WeatherList";
 import CurrentWeather from "../components/CurrentWeather";
-import styles from "../components/WeatherCard.module.css";
-import Typography from "antd/es/typography/Typography";
+import styles from "./HomePage.module.css";
 import RightOutlined from "@ant-design/icons/RightOutlined";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Space } from "antd";
 import { selectData } from "../store/weather/selectors";
+import { EnvironmentOutlined } from "@ant-design/icons";
 
 const HomePage: React.FC = () => {
   const weatherData = useSelector(selectData);
@@ -15,20 +14,21 @@ const HomePage: React.FC = () => {
 
   return (
     <Space direction="vertical">
-      <Typography>
+      <div className={styles.location}>
+        <EnvironmentOutlined className={styles.locationIcon} />
         {weatherData.location.name}, {weatherData.location.country}
-      </Typography>
+      </div>
       <CurrentWeather
         data={weatherData.forecast.forecastday[0]}
         feelslike_c={weatherData.current.feelslike_c}
         pressure_mb={weatherData.current.pressure_mb}
       />
-      <Space align="center">
-        <Typography>6 DAY FORECAST</Typography>
-        <Link to="/details" className={styles.link}>
+      <div className={styles.moreDetailBar}>
+        <span className={styles.label6DaysForecast}>6 DAY FORECAST</span>
+        <a href="/details" className={styles.link}>
           Go to Details <RightOutlined />
-        </Link>
-      </Space>
+        </a>
+      </div>
       <WeatherList data={weatherData.forecast.forecastday.slice(1)} />
     </Space>
   );

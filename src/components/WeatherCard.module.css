@@ -4,19 +4,6 @@
     padding: 10px;
 }
 
-.link {
-    display: inline-block;
-    color: #1890ff;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: color 0.3s ease-in-out;
-}
-
-.link:hover {
-    color: #0050b3;
-}
-
 .btn {
     width: 150px;
     height: auto;
@@ -65,7 +52,7 @@
 .expandBox {
     width: 150px;
     height: 150px;
-    line-height: 2;
+    /*line-height: 2;*/
     flex: auto;
     display: flex;
     flex-direction: column;
