@@ -18,16 +18,9 @@ const WeatherCard = ({
       className={expanded ? styles.btnActive : styles.btn}
       onClick={() => toggleExpand(header)}
     >
-      <span>
+      {/*<span>*/}
         <div>
-          <div
-            style={{
-              display: "flex",
-              height: "160px",
-              minWidth: "150px",
-              maxWidth: "300px",
-            }}
-          >
+          <div className={styles.weatherBox}>
             <div style={{ width: "150px" }}>
               <p>{header}</p>
               <img
@@ -66,7 +59,7 @@ const WeatherCard = ({
             )}
           </div>
         </div>
-      </span>
+      {/*</span>*/}
     </Button>
   );
 };
