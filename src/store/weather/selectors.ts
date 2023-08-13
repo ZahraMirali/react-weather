@@ -1,6 +1,5 @@
-export const selectWeatherData = (state: { weather: { weatherData: any } }) =>
-  state.weather.weatherData;
-export const selectLoading = (state: { weather: { loading: any } }) =>
-  state.weather.loading;
-export const selectError = (state: { weather: { error: any } }) =>
-  state.weather.error;
+import { RootState } from "../store";
+
+export const selectData = (state: RootState) => state.weather.data;
+export const selectLoading = (state: RootState) => state.weather.loading;
+export const selectError = (state: RootState) => state.weather.error;

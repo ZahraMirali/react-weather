@@ -2,15 +2,20 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import WeatherDetailsPage from "./pages/WeatherDetailsPage";
 import styles from "./App.module.css";
-import { Alert, Button, Layout, Space, Spin } from "antd";
+import { Alert, Layout, Spin } from "antd";
 import SearchBar from "./components/SearchBar";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BASE_URL, FORECAST_URL } from "./constants/urls";
+import { BASE_URL } from "./constants/urls";
 import axios from "axios";
 import ErrorBoundary from "./components/ErrorBoundary";
-import { setWeatherData, setLoading, setError } from "./store/weather/actions";
-import { selectError, selectLoading, selectWeatherData } from "./store/weather/selectors";
+import { fetchForecastWeather } from "./store/weather/weatherSlice";
+import {
+  selectError,
+  selectLoading,
+  selectData,
+} from "./store/weather/selectors";
+import { AppDispatch } from "./store/store";
 
 const { Header, Content } = Layout;
 
@@ -20,49 +25,32 @@ axios.defaults.params = {
 };
 
 function App() {
-  const dispatch = useDispatch();
-  const weatherData = useSelector(selectWeatherData);
+  const dispatch: AppDispatch = useDispatch();
+  const weatherData = useSelector(selectData);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
-
-  const handleGeolocation = () => {
-    navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        const { latitude, longitude } = position.coords;
-        await getForecast(`${latitude},${longitude}`);
-      }
-    );
-  };
-
-  async function getForecast(q: string) {
-    try {
-      dispatch(setLoading(true));
-      dispatch(setError(null));
-
-      const response = await axios.get(FORECAST_URL, {
-        params: {
-          q,
-          days: 8,
-        },
-      });
-      dispatch(setWeatherData(response.data));
-    } catch (error) {
-      dispatch(setError("An error occurred while fetching weather data."));
-    } finally {
-      dispatch(setLoading(false));
-    }
-  }
 
   useEffect(() => {
     handleGeolocation();
   }, []);
+
+  function handleGeolocation() {
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      const { latitude, longitude } = position.coords;
+      getForecastWeather(`${latitude},${longitude}`);
+    });
+  }
+
+  function getForecastWeather(q: string) {
+    dispatch(fetchForecastWeather(q));
+  }
 
   return (
     <BrowserRouter>
       <Layout className={styles.layout}>
         <Header className={styles.header}>
           <h1 className={styles.title}>Weather App</h1>
-          <SearchBar onSubmit={getForecast} />
+          <SearchBar onSubmit={getForecastWeather} />
         </Header>
         <Content>
           <ErrorBoundary
@@ -75,18 +63,26 @@ function App() {
               />
             }
           >
-            {error ? <Alert message={error} type="error" /> : !weatherData ? <Alert
-              message="Request Geolocation"
-              description="To provide you with better service, please enable geolocation."
-              type="info"
-            /> : <Routes>
-              <Route path="/details" element={<WeatherDetailsPage />} />
-              <Route path="/" element={<HomePage />} />
-            </Routes>}
+            {error ? (
+              <Alert message={error} type="error" />
+            ) : !weatherData ? (
+              <Alert
+                message="Request Geolocation"
+                description="To provide you with better service, please enable geolocation."
+                type="info"
+              />
+            ) : (
+              <Routes>
+                <Route path="/details" element={<WeatherDetailsPage />} />
+                <Route path="/" element={<HomePage />} />
+              </Routes>
+            )}
           </ErrorBoundary>
-          {loading && <div className="loading-overlay">
+          {loading && (
+            <div className="loading-overlay">
               <Spin size="large" />
-            </div>}
+            </div>
+          )}
         </Content>
       </Layout>
     </BrowserRouter>

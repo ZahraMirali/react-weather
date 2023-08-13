@@ -7,12 +7,10 @@ import RightOutlined from "@ant-design/icons/RightOutlined";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Space } from "antd";
-import {
-  selectWeatherData
-} from "../store/weather/selectors";
+import { selectData } from "../store/weather/selectors";
 
 const HomePage: React.FC = () => {
-  const weatherData = useSelector(selectWeatherData);
+  const weatherData = useSelector(selectData);
 
   return (
     <Space direction="vertical">
