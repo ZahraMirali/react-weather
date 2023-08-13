@@ -6,23 +6,27 @@ const CurrentWeather = ({ data, feelslike_c, pressure_mb }: any) => {
 
   return (
     <Card className={styles.currentWeatherCard}>
-      <Space direction="vertical">
+      <div>
         <div className={styles.currentWeatherLabelAndDateBox}>
           <span className={styles.currentWeatherLabel}>Current weather</span>
           <span className={styles.currentDate}>{data.date}</span>
         </div>
-        <Space>
-          <img
-            width={96}
-            height={96}
-            alt={todayForecast.condition.text}
-            src={todayForecast.condition.icon}
-          />
-          <Space>
-            <span className={styles.avgTemp}>
-              {todayForecast.avgtemp_c}
-              <sup> °C</sup>
-            </span>
+        <Row gutter={[24, 8]} align="middle">
+          <Col>
+            <Space>
+              <img
+                width={96}
+                height={96}
+                alt={todayForecast.condition.text}
+                src={todayForecast.condition.icon}
+              />
+              <span className={styles.avgTemp}>
+                {todayForecast.avgtemp_c}
+                <sup> °C</sup>
+              </span>
+            </Space>
+          </Col>
+          <Col xs={24} md={12}>
             <div className={styles.summaryBox}>
               <span className={styles.conditionText}>
                 {todayForecast.condition.text}
@@ -32,9 +36,9 @@ const CurrentWeather = ({ data, feelslike_c, pressure_mb }: any) => {
                 <sup> °C</sup>
               </span>
             </div>
-          </Space>
-        </Space>
-      </Space>
+          </Col>
+        </Row>
+      </div>
       <div className={styles.statisticsBar}>
         <Row gutter={16}>
           <Col xs={16} sm={6}>
