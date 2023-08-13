@@ -8,21 +8,11 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Space } from "antd";
 import {
-  selectWeatherData,
-  selectLoading,
-  selectError,
+  selectWeatherData
 } from "../store/weather/selectors";
-import { Spin, Alert } from "antd";
 
 const HomePage: React.FC = () => {
   const weatherData = useSelector(selectWeatherData);
-  const loading = useSelector(selectLoading);
-  const error = useSelector(selectError);
-
-  if (loading) return <Spin size="large" />;
-  if (error) return <Alert message={error} type="error" />;
-
-  if (!weatherData) return <Typography>please select</Typography>;
 
   return (
     <Space direction="vertical">
