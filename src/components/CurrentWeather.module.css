@@ -21,29 +21,23 @@
     margin-top: 1.25rem;
 }
 
-.tempBox {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.tempBox .summaryBox {
+.summaryBox {
     margin-left: 2rem;
     display: flex;
     flex-direction: column;
 }
 
-.tempBox .summaryBox .conditionText {
+.summaryBox .conditionText {
     font-size: 1.125rem;
     font-weight: bold;
 }
 
-.tempBox .summaryBox .feelsLikeText {
+.summaryBox .feelsLikeText {
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.6);
 }
 
-.tempBox .summaryBox .feelsLikeText sup {
+.summaryBox .feelsLikeText sup {
     font-size: 0.6rem;
 }
 
@@ -53,6 +47,10 @@
 
 .avgTemp sup {
     font-size: 2rem;
+}
+
+.statisticsBar {
+    margin-top: 3rem;
 }
 
 .statistic {

@@ -18,7 +18,7 @@ const CurrentWeather = ({ data, feelslike_c, pressure_mb }: any) => {
             alt={todayForecast.condition.text}
             src={todayForecast.condition.icon}
           />
-          <div className={styles.tempBox}>
+          <Space>
             <span className={styles.avgTemp}>
               {todayForecast.avgtemp_c}
               <sup> °C</sup>
@@ -32,10 +32,10 @@ const CurrentWeather = ({ data, feelslike_c, pressure_mb }: any) => {
                 <sup> °C</sup>
               </span>
             </div>
-          </div>
+          </Space>
         </Space>
       </Space>
-      <div style={{marginTop:"50px"}}>
+      <div className={styles.statisticsBar}>
         <Row gutter={16}>
           <Col xs={16} sm={6}>
             <div className={styles.statistic}>
