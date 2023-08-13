@@ -19,33 +19,36 @@ const CurrentWeather = ({ data }: any) => {
             src={todayForecast.condition.icon}
           />
           <div>
-            <Typography>{todayForecast.avgtemp_c} °C</Typography>
-            <Typography>{todayForecast.condition.text}</Typography>
+            <div>{todayForecast.avgtemp_c} °C</div>
+            <div>{todayForecast.condition.text}</div>
           </div>
         </Space>
       </Space>
       <div>
         <Row gutter={16}>
           <Col xs={16} sm={8}>
-            <Statistic
-              title="Wind"
-              value={todayForecast.maxwind_kph}
-              suffix="km/h"
-            />
+            <div className={styles.statistic}>
+              <span className={styles.statisticTitle}>Wind</span>
+              <span className={styles.statisticValue}>
+                {todayForecast.maxwind_kph} km/h
+              </span>
+            </div>
           </Col>
           <Col xs={16} sm={8}>
-            <Statistic
-              title="Humidity"
-              value={todayForecast.avghumidity}
-              suffix="%"
-            />
+            <div className={styles.statistic}>
+              <span className={styles.statisticTitle}>Humidity</span>
+              <span className={styles.statisticValue}>
+                {todayForecast.avghumidity} %
+              </span>
+            </div>
           </Col>
           <Col xs={16} sm={8}>
-            <Statistic
-              title="Visibility"
-              value={todayForecast.avgvis_km}
-              suffix="km"
-            />
+            <div className={styles.statistic}>
+              <span className={styles.statisticTitle}>Visibility</span>
+              <span className={styles.statisticValue}>
+                {todayForecast.avgvis_km} km
+              </span>
+            </div>
           </Col>
         </Row>
       </div>

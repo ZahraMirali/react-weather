@@ -1,8 +1,10 @@
 .layout {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(rgb(36, 84, 148) 0%, rgb(28, 68, 132) 100%);
+  /*background: rgba(0, 0, 0, 0.30);*/
+  background: transparent;
   height: 100vh;
+  padding: 10px;
 }
 
 .header {
