@@ -1,47 +1,51 @@
 import { Card, Row, Col, Statistic, Typography, Space } from "antd";
 import styles from "./CurrentWeather.module.css";
 
-const WeatherCard = () => {
+const CurrentWeather = ({ data }: any) => {
+  const todayForecast = data.day;
+
   return (
     <Card className={styles.currentWeatherCard}>
       <Space direction="vertical">
-        <div>
-          <div>Current weather</div>
-          <div>5:40 PM</div>
-        </div>
+        <Space>
+          <div>Today</div>
+          <div>{data.date}</div>
+        </Space>
         <Space>
           <img
             width={72}
             height={72}
-            title="Sunny"
-            src="https://assets.msn.com/weathermapdata/1/static/weather/Icons/taskbar_v10/Condition_Card/SunnyDayV3.svg"
+            alt={todayForecast.condition.text}
+            src={todayForecast.condition.icon}
           />
-          <Typography>70 °C</Typography>
           <div>
-            <Typography>Light rain showers</Typography>
-            <Typography>Feels like 70°</Typography>
+            <Typography>{todayForecast.avgtemp_c} °C</Typography>
+            <Typography>{todayForecast.condition.text}</Typography>
           </div>
         </Space>
       </Space>
       <div>
         <Row gutter={16}>
-          <Col xs={8} sm={4}>
-            <Statistic title="Air quality" value={15} />
+          <Col xs={16} sm={8}>
+            <Statistic
+              title="Wind"
+              value={todayForecast.maxwind_kph}
+              suffix="km/h"
+            />
           </Col>
-          <Col xs={8} sm={4}>
-            <Statistic title="Wind" value={18} suffix="km/h" />
+          <Col xs={16} sm={8}>
+            <Statistic
+              title="Humidity"
+              value={todayForecast.avghumidity}
+              suffix="%"
+            />
           </Col>
-          <Col xs={8} sm={4}>
-            <Statistic title="Humidity" value={68} suffix="%" />
-          </Col>
-          <Col xs={8} sm={4}>
-            <Statistic title="Visibility" value={14.3} suffix="km" />
-          </Col>
-          <Col xs={8} sm={4}>
-            <Statistic title="Pressure" value={29.98} suffix="mb" />
-          </Col>
-          <Col xs={8} sm={4}>
-            <Statistic title="Dew Point" value={60} suffix="°" />
+          <Col xs={16} sm={8}>
+            <Statistic
+              title="Visibility"
+              value={todayForecast.avgvis_km}
+              suffix="km"
+            />
           </Col>
         </Row>
       </div>
@@ -49,4 +53,4 @@ const WeatherCard = () => {
   );
 };
 
-export default WeatherCard;
+export default CurrentWeather;

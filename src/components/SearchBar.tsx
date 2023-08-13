@@ -6,7 +6,7 @@ import { FORECAST_URL } from "../constants/urls";
 import { useDispatch } from "react-redux";
 import styles from "./SearchBar.module.css";
 
-export default function SearchBar() {
+export default function SearchBar({ onSubmit }: any) {
   const [searchValue, setSearchValue] = useState<string>("");
   const dispatch = useDispatch();
   const [options, setOptions] = useState([]);
@@ -34,18 +34,7 @@ export default function SearchBar() {
   async function handleSelect(event: any, option: any) {
     setSearchValue(option.value);
     console.log("handleSelect", option);
-
-    try {
-      const response = await axios.get(FORECAST_URL, {
-        params: {
-          q: option.coords,
-          days: 5,
-        },
-      });
-      dispatch({ type: "SET_WEATHER_DATA", payload: response.data });
-    } catch (error) {
-      console.error("Error fetching weather data:", error);
-    }
+    onSubmit(option.coords);
   }
 
   const debouncedSearch = debounce(handleSearch, 300);
