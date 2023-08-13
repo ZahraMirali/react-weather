@@ -13,7 +13,7 @@ const HomePage: React.FC = () => {
   if (!weatherData) return null;
 
   return (
-    <Space direction="vertical">
+    <Space direction="vertical" style={{ display: "flex" }}>
       <div className={styles.location}>
         <EnvironmentOutlined className={styles.locationIcon} />
         {weatherData.location.name}, {weatherData.location.country}
@@ -24,7 +24,9 @@ const HomePage: React.FC = () => {
         pressure_mb={weatherData.current.pressure_mb}
       />
       <div className={styles.moreDetailBar}>
-        <span className={styles.label6DaysForecast}>6 DAY FORECAST</span>
+        <span className={styles.label6DaysForecast}>
+          {weatherData.forecast.forecastday.length - 1} DAY FORECAST
+        </span>
         <a href="/details" className={styles.link}>
           Go to Details <RightOutlined />
         </a>

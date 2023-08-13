@@ -15,7 +15,7 @@ const WeatherList = ({ data }: WeatherListProps) => {
   };
 
   return (
-    <Space>
+    <Space style={{ overflowX: "auto", display: "flex", borderRadius: "6px" }}>
       {data.map((item) => (
         <WeatherCard
           header={item.date}

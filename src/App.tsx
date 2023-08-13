@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import WeatherDetailsPage from "./pages/WeatherDetailsPage";
 import styles from "./App.module.css";
-import { Alert, Layout, Spin } from "antd";
+import { Alert, Col, Layout, Row, Spin } from "antd";
 import SearchBar from "./components/SearchBar";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -48,8 +48,12 @@ function App() {
   return (
     <BrowserRouter>
       <Header className={styles.header}>
-        <h1 className={styles.title}>Weather App</h1>
-        <SearchBar onSubmit={getForecastWeather} />
+        <Row align="middle" justify="space-between" style={{ flex: 1 }}>
+          <Col xs={24} md={12}>
+            <h1 className={styles.title}>Weather App</h1>
+          </Col>
+          <SearchBar onSubmit={getForecastWeather} />
+        </Row>
       </Header>
 
       <Layout className={styles.layout}>
@@ -64,20 +68,24 @@ function App() {
               />
             }
           >
-            {error ? (
-              <Alert message={error} type="error" />
-            ) : !weatherData ? (
-              <Alert
-                message="Request Geolocation"
-                description="To provide you with better service, please enable geolocation."
-                type="info"
-              />
-            ) : (
-              <Routes>
-                <Route path="/details" element={<WeatherDetailsPage />} />
-                <Route path="/" element={<HomePage />} />
-              </Routes>
-            )}
+            <Row justify="center" align="middle">
+              <Col xs={24} md={20}>
+                {error ? (
+                  <Alert message={error} type="error" />
+                ) : !weatherData ? (
+                  <Alert
+                    message="Request Geolocation"
+                    description="To provide you with better service, please enable geolocation."
+                    type="info"
+                  />
+                ) : (
+                  <Routes>
+                    <Route path="/details" element={<WeatherDetailsPage />} />
+                    <Route path="/" element={<HomePage />} />
+                  </Routes>
+                )}
+              </Col>
+            </Row>
           </ErrorBoundary>
           {loading && (
             <div className="loading-overlay">

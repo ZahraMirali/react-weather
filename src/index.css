@@ -15,3 +15,12 @@ body {
   align-items: center;
   z-index: 9999; /* Ensure the overlay is on top of everything */
 }
+
+::-webkit-scrollbar {
+  height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgb(12, 37, 80);
+}
