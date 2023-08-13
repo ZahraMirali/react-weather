@@ -1,5 +1,7 @@
-import { Card, Row, Col, Space } from "antd";
+import { Card, Col, Row, Space } from "antd";
 import styles from "./CurrentWeather.module.css";
+import Statistic from "./Statistic";
+import React from "react";
 
 const CurrentWeather = ({ data, feelslike_c, pressure_mb }: any) => {
   const todayForecast = data.day;
@@ -42,34 +44,34 @@ const CurrentWeather = ({ data, feelslike_c, pressure_mb }: any) => {
       <div className={styles.statisticsBar}>
         <Row gutter={16}>
           <Col xs={16} sm={6}>
-            <div className={styles.statistic}>
-              <span className={styles.statisticTitle}>Wind</span>
-              <span className={styles.statisticValue}>
-                {todayForecast.maxwind_kph} km/h
-              </span>
-            </div>
+            <Statistic
+              title="Wind"
+              value={todayForecast.maxwind_kph}
+              suffix="km/h"
+            />
           </Col>
           <Col xs={16} sm={6}>
-            <div className={styles.statistic}>
-              <span className={styles.statisticTitle}>Humidity</span>
-              <span className={styles.statisticValue}>
-                {todayForecast.avghumidity} %
-              </span>
-            </div>
+            <Statistic
+              title="Humidity"
+              value={todayForecast.avghumidity}
+              suffix="%"
+            />
           </Col>
           <Col xs={16} sm={6}>
-            <div className={styles.statistic}>
-              <span className={styles.statisticTitle}>Visibility</span>
-              <span className={styles.statisticValue}>
-                {todayForecast.avgvis_km} km
-              </span>
-            </div>
+            <Statistic
+              title="Visibility"
+              value={todayForecast.avgvis_km}
+              suffix="km"
+              suffixIsSuperscript={false}
+            />
           </Col>
           <Col xs={16} sm={6}>
-            <div className={styles.statistic}>
-              <span className={styles.statisticTitle}>Pressure</span>
-              <span className={styles.statisticValue}>{pressure_mb} mb</span>
-            </div>
+            <Statistic
+              title="Pressure"
+              value={pressure_mb}
+              suffix="mb"
+              suffixIsSuperscript={false}
+            />
           </Col>
         </Row>
       </div>

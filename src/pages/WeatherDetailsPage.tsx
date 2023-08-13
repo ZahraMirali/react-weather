@@ -24,7 +24,6 @@ const WeatherDetailsPage: React.FC = () => {
               alt={day.condition.text}
               src={day.condition.icon}
             />
-
             <Statistic
               title="Temperature"
               value={day.avgtemp_c}
