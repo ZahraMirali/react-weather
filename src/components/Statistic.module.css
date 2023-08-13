@@ -1,0 +1,22 @@
+.statisticsBar {
+    margin-top: 3rem;
+}
+
+.statistic {
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+}
+
+.statistic .statisticTitle {
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-size: 0.8rem;
+}
+
+.statistic .statisticValue {
+    font-size: 1.5rem;
+}
+
+.statistic .statisticValue sup {
+    font-size: 1rem;
+}

@@ -1,7 +1,9 @@
 import React from "react";
-import { Statistic, Card, Row, Col, Space, Typography, Divider } from "antd";
+import { Card, Col, Divider, Row, Space } from "antd";
 import { useSelector } from "react-redux";
 import { selectData } from "../store/weather/selectors";
+import styles from "./WeatherDetailsPage.module.css";
+import Statistic from "../components/Statistic";
 
 const WeatherDetailsPage: React.FC = () => {
   const weatherData = useSelector(selectData);
@@ -12,8 +14,8 @@ const WeatherDetailsPage: React.FC = () => {
   return (
     <Space direction="vertical" style={{ display: "flex" }}>
       {data.map(({ date, day }) => (
-        <Card>
-          <Typography>Day {date}</Typography>
+        <Card className={styles.currentWeatherCard}>
+          <span>{date}</span>
           <Divider />
           <Row justify="space-between">
             <img
@@ -22,24 +24,25 @@ const WeatherDetailsPage: React.FC = () => {
               alt={day.condition.text}
               src={day.condition.icon}
             />
+
             <Statistic
-              title="avgtemp_c"
+              title="Temperature"
               value={day.avgtemp_c}
-              prefix="°C"
-              style={{ marginBottom: 16 }}
+              suffix="°C"
+              suffixIsSuperscript={true}
             />
             <Space direction="vertical">
               <Statistic
-                title="maxtemp_c"
+                title="Max"
                 value={day.maxtemp_c}
-                prefix="°C"
-                style={{ marginBottom: 16 }}
+                suffix="°C"
+                suffixIsSuperscript={true}
               />
               <Statistic
-                title="mintemp_c"
+                title="Min"
                 value={day.mintemp_c}
-                prefix="°C"
-                style={{ marginBottom: 16 }}
+                suffix="°C"
+                suffixIsSuperscript={true}
               />
             </Space>
           </Row>
