@@ -1,14 +1,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getForecast } from "../../api/weather";
+import { WeatherData } from "../../types/weather";
 
 export interface WeatherState {
-  data: any;
-  loading: boolean;
+  data?: WeatherData;
   error?: string;
+  loading: boolean;
 }
 
 const initialState: WeatherState = {
-  data: null,
+  data: undefined,
   loading: false,
   error: undefined,
 };

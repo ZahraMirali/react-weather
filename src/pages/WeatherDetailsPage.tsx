@@ -1,26 +1,17 @@
-import React, { useState } from "react";
-import {
-  Layout,
-  Statistic,
-  Button,
-  Card,
-  Row,
-  Col,
-  Space,
-  Typography,
-  Divider,
-} from "antd";
+import React from "react";
+import { Statistic, Card, Row, Col, Space, Typography, Divider } from "antd";
 import { useSelector } from "react-redux";
 import { selectData } from "../store/weather/selectors";
 
 const WeatherDetailsPage: React.FC = () => {
   const weatherData = useSelector(selectData);
+  if (!weatherData) return null;
 
   const data = weatherData.forecast.forecastday;
 
   return (
     <Space direction="vertical" style={{ display: "flex" }}>
-      {data.map(({ date, day }: any) => (
+      {data.map(({ date, day }) => (
         <Card>
           <Typography>Day {date}</Typography>
           <Divider />

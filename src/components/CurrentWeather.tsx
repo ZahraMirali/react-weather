@@ -1,7 +1,7 @@
 import { Card, Row, Col, Space } from "antd";
 import styles from "./CurrentWeather.module.css";
 
-const CurrentWeather = ({ data, feelslike_c }: any) => {
+const CurrentWeather = ({ data, feelslike_c, pressure_mb }: any) => {
   const todayForecast = data.day;
 
   return (
@@ -37,7 +37,7 @@ const CurrentWeather = ({ data, feelslike_c }: any) => {
       </Space>
       <div style={{marginTop:"50px"}}>
         <Row gutter={16}>
-          <Col xs={16} sm={8}>
+          <Col xs={16} sm={6}>
             <div className={styles.statistic}>
               <span className={styles.statisticTitle}>Wind</span>
               <span className={styles.statisticValue}>
@@ -45,7 +45,7 @@ const CurrentWeather = ({ data, feelslike_c }: any) => {
               </span>
             </div>
           </Col>
-          <Col xs={16} sm={8}>
+          <Col xs={16} sm={6}>
             <div className={styles.statistic}>
               <span className={styles.statisticTitle}>Humidity</span>
               <span className={styles.statisticValue}>
@@ -53,12 +53,18 @@ const CurrentWeather = ({ data, feelslike_c }: any) => {
               </span>
             </div>
           </Col>
-          <Col xs={16} sm={8}>
+          <Col xs={16} sm={6}>
             <div className={styles.statistic}>
               <span className={styles.statisticTitle}>Visibility</span>
               <span className={styles.statisticValue}>
                 {todayForecast.avgvis_km} km
               </span>
+            </div>
+          </Col>
+          <Col xs={16} sm={6}>
+            <div className={styles.statistic}>
+              <span className={styles.statisticTitle}>Pressure</span>
+              <span className={styles.statisticValue}>{pressure_mb} mb</span>
             </div>
           </Col>
         </Row>
