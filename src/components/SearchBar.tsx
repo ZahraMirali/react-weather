@@ -1,9 +1,9 @@
-import { AutoComplete } from "antd";
-import axios from "axios";
+import { AutoComplete, message } from "antd";
 import debounce from "lodash.debounce";
 import { useState } from "react";
 import styles from "./SearchBar.module.css";
 import { LocationInfo, LocationOption } from "../types/location";
+import { getLocations } from "../api/location";
 
 interface SearchBarProps {
   onSubmit: (q: string) => void;
@@ -12,6 +12,7 @@ interface SearchBarProps {
 export default function SearchBar({ onSubmit }: SearchBarProps) {
   const [searchValue, setSearchValue] = useState<string>("");
   const [options, setOptions] = useState([]);
+  const [messageApi, contextHolder] = message.useMessage();
 
   async function handleSearch(value: string) {
     if (!value) {
@@ -20,7 +21,7 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
     }
 
     try {
-      const response = await axios.get("search.json", { params: { q: value } });
+      const response = await getLocations(value);
       const formattedSuggestions = response.data.map(
         (location: LocationInfo) => ({
           value: `${location.name}, ${location.country}`,
@@ -29,7 +30,10 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
       );
       setOptions(formattedSuggestions);
     } catch (error) {
-      console.error("Error fetching suggestions:", error);
+      messageApi.open({
+        type: "error",
+        content: "Error fetching suggestions",
+      });
     }
   }
 
@@ -41,16 +45,19 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
   const debouncedSearch = debounce(handleSearch, 300);
 
   return (
-    <AutoComplete
-      value={searchValue}
-      onChange={setSearchValue}
-      className={styles.autocomplete}
-      onSelect={handleSelect}
-      onSearch={debouncedSearch}
-      placeholder="Search city..."
-      options={options}
-      allowClear
-      notFoundContent={searchValue ? "No results found" : null}
-    />
+    <>
+      {contextHolder}
+      <AutoComplete
+        value={searchValue}
+        onChange={setSearchValue}
+        className={styles.autocomplete}
+        onSelect={handleSelect}
+        onSearch={debouncedSearch}
+        placeholder="Search city..."
+        options={options}
+        allowClear
+        notFoundContent={searchValue ? "No results found" : null}
+      />
+    </>
   );
 }
