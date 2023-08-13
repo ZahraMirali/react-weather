@@ -7,6 +7,7 @@ import { fetchForecastWeather } from "./store/weather/weatherSlice";
 import { AppDispatch } from "./store/store";
 import Header from "./components/Header";
 import Content from "./components/Content";
+import ErrorFallback from "./components/ErrorFallback";
 
 function App() {
   const dispatch: AppDispatch = useDispatch();
@@ -28,16 +29,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <ErrorBoundary
-        fallback={
-          <Alert
-            message="Error"
-            description="This is an error message about copywriting."
-            type="error"
-            showIcon
-          />
-        }
-      >
+      <ErrorBoundary fallback={<ErrorFallback />}>
         <Header onSearchSubmit={getForecastWeather} />
         <Content />
       </ErrorBoundary>

@@ -21,7 +21,7 @@ const Content = () => {
   return (
     <Layout className={styles.layout}>
       <AntContent>
-        <Row justify="center" align="middle">
+        <Row justify="center">
           <Col xs={24} md={20}>
             {error ? (
               <Alert message={error} type="error" />
