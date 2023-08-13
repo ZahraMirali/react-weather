@@ -39,8 +39,7 @@
     border-color: transparent !important;
 }
 
-.btnActive,
-.btnActive:hover {
+.btnActive {
     width: 300px;
     height: auto;
     margin: 0 !important;
