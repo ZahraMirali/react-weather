@@ -1,19 +1,6 @@
 import { createStore } from "redux";
+import rootReducer from "./weather/reducers";
 
-const initialState = {
-  weatherData: null,
-};
-
-const reducer = (state = initialState, action: any) => {
-  if (action.type === "SET_WEATHER_DATA") {
-    return {
-      ...state,
-      weatherData: action.payload,
-    };
-  }
-  return state;
-};
-
-const store = createStore(reducer);
+const store = createStore(rootReducer);
 
 export default store;

@@ -2,18 +2,13 @@ import { AutoComplete } from "antd";
 import axios from "axios";
 import debounce from "lodash.debounce";
 import { useState } from "react";
-import { FORECAST_URL } from "../constants/urls";
-import { useDispatch } from "react-redux";
 import styles from "./SearchBar.module.css";
 
 export default function SearchBar({ onSubmit }: any) {
   const [searchValue, setSearchValue] = useState<string>("");
-  const dispatch = useDispatch();
   const [options, setOptions] = useState([]);
 
   async function handleSearch(value: any) {
-    console.log("handleSearch", value);
-
     if (!value) {
       setOptions([]);
       return;
