@@ -1,21 +1,59 @@
 .currentWeatherCard {
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.10), rgba(100, 100, 100, 0.3)) !important;
-    /*background-color: rgba(255, 255, 255, 0.1);*/
-    border-color: rgba(245, 245, 245, 0.10) !important;
+    background: -moz-linear-gradient(
+            top,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0.02) 100%
+    ); /* FF3.6-15 */
+    background: -webkit-linear-gradient(
+            top,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0.02) 100%
+    ); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0.02) 100%
+    ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    border-width: 0;
     color: white;
-    border-radius: 10px;
-    padding: 10px;
-    margin-top: 20px;
+    border-radius: 0.625rem;
+    padding: 0.625rem;
+    margin-top: 1.25rem;
+}
+
+.tempBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.tempBox .summaryBox {
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.tempBox .summaryBox .conditionText {
+    font-size: 1.125rem;
+    font-weight: bold;
+}
+
+.tempBox .summaryBox .feelsLikeText {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.tempBox .summaryBox .feelsLikeText sup {
+    font-size: 0.6rem;
 }
 
 .avgTemp {
-    font-size: 64px;
+    font-size: 4rem;
 }
 
 .avgTemp sup {
-    font-size: 24px;
+    font-size: 2rem;
 }
-
 
 .statistic {
     display: flex;
@@ -23,11 +61,11 @@
 }
 
 .statistic .statisticTitle {
-    color: #c7c7c7 !important;
-    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-size: 0.8rem;
 }
 
-.statistic > .statisticValue {
+.statistic .statisticValue {
     color: #ffffff;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }

@@ -8,27 +8,34 @@ const CurrentWeather = ({ data, feelslike_c }: any) => {
     <Card className={styles.currentWeatherCard}>
       <Space direction="vertical">
         <Space>
-          <div>Today</div>
-          <div>{data.date}</div>
+          Today
+          {data.date}
         </Space>
         <Space>
           <img
-            width={72}
-            height={72}
+            width={96}
+            height={96}
             alt={todayForecast.condition.text}
             src={todayForecast.condition.icon}
           />
-          <div>
+          <div className={styles.tempBox}>
             <span className={styles.avgTemp}>
               {todayForecast.avgtemp_c}
               <sup> °C</sup>
             </span>
-            <span>{todayForecast.condition.text}</span>
-            <span>Feels like {feelslike_c} °C</span>
+            <div className={styles.summaryBox}>
+              <span className={styles.conditionText}>
+                {todayForecast.condition.text}
+              </span>
+              <span className={styles.feelsLikeText}>
+                Feels like {feelslike_c}
+                <sup> °C</sup>
+              </span>
+            </div>
           </div>
         </Space>
       </Space>
-      <div>
+      <div style={{marginTop:"50px"}}>
         <Row gutter={16}>
           <Col xs={16} sm={8}>
             <div className={styles.statistic}>
