@@ -1,4 +1,4 @@
-import { Card, Row, Col, Statistic, Typography, Space } from "antd";
+import { Card, Row, Col, Space } from "antd";
 import styles from "./CurrentWeather.module.css";
 
 const CurrentWeather = ({ data }: any) => {
@@ -19,8 +19,8 @@ const CurrentWeather = ({ data }: any) => {
             src={todayForecast.condition.icon}
           />
           <div>
-            <div>{todayForecast.avgtemp_c} °C</div>
-            <div>{todayForecast.condition.text}</div>
+            <span className={styles.avgTemp}>{todayForecast.avgtemp_c}<sup> °C</sup></span>
+            <span>{todayForecast.condition.text}</span>
           </div>
         </Space>
       </Space>

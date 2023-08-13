@@ -8,6 +8,15 @@
     margin-top: 20px;
 }
 
+.avgTemp {
+    font-size: 64px;
+}
+
+.avgTemp sup {
+    font-size: 24px;
+}
+
+
 .statistic {
     display: flex;
     flex-direction: column;
@@ -18,7 +27,7 @@
     font-size: 1rem;
 }
 
-.statistic>.statisticValue {
+.statistic > .statisticValue {
     color: #ffffff;
     font-size: 2rem;
 }
