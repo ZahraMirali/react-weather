@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import WeatherDetailsPage from "./pages/WeatherDetailsPage";
 import styles from "./App.module.css";
@@ -51,7 +51,9 @@ function App() {
       <Header className={styles.header}>
         <Row align="middle" justify="space-between" style={{ flex: 1 }}>
           <Col xs={24} md={12}>
-            <h1 className={styles.title}>Weather App</h1>
+            <Link to="/">
+              <h1 className={styles.title}>Weather App</h1>
+            </Link>
           </Col>
           <SearchBar onSubmit={getForecastWeather} />
         </Row>
