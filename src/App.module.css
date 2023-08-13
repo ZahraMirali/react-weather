@@ -19,3 +19,15 @@
   font-weight: bold;
   margin: 0;
 }
+
+.locationIcon {
+  margin-right: 5px;
+}
+
+.location {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}

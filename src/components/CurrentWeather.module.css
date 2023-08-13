@@ -18,6 +18,7 @@
   color: white;
   border-radius: 0.625rem;
   padding: 0.625rem;
+  margin-bottom: 40px;
 }
 
 .currentWeatherLabelAndDateBox {

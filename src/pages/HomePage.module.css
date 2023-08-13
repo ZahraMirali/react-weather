@@ -1,37 +1,25 @@
 .moreDetailBar {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.locationIcon {
-    margin-right: 5px;
-}
-
-.location {
-    color: #ffffff;
-    font-size: 1rem;
-    font-weight: bold;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.label6DaysForecast {
-    color: #ffffff;
-    font-weight: bold;
+.labelDaysForecast {
+  color: #ffffff;
+  font-weight: bold;
 }
 
 .link {
-    display: inline-block;
-    color: #ffffff;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: color 0.3s ease-in-out;
+  display: inline-block;
+  color: #ffffff;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
 }
 
 .link:hover {
-    color: #00dac3;
+  color: #00dac3;
 }

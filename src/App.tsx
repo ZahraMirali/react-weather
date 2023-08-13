@@ -16,6 +16,7 @@ import {
   selectLoading,
 } from "./store/weather/selectors";
 import { AppDispatch } from "./store/store";
+import { EnvironmentOutlined } from "@ant-design/icons";
 
 const { Header, Content } = Layout;
 
@@ -79,10 +80,17 @@ function App() {
                     type="info"
                   />
                 ) : (
-                  <Routes>
-                    <Route path="/details" element={<WeatherDetailsPage />} />
-                    <Route path="/" element={<HomePage />} />
-                  </Routes>
+                  <>
+                    <div className={styles.location}>
+                      <EnvironmentOutlined className={styles.locationIcon} />
+                      {weatherData.location.name},{" "}
+                      {weatherData.location.country}
+                    </div>
+                    <Routes>
+                      <Route path="/details" element={<WeatherDetailsPage />} />
+                      <Route path="/" element={<HomePage />} />
+                    </Routes>
+                  </>
                 )}
               </Col>
             </Row>
