@@ -29,7 +29,7 @@ const WeatherCard = ({
       onClick={toggleExpand}
     >
       <div className={styles.weatherBox}>
-        <div style={{ width: "150px", height: "150px" }}>
+        <div className={styles.dateAndImageBox}>
           <p>{date}</p>
           <img src={conditionIcon} alt={conditionText} />
         </div>
