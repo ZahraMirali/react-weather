@@ -1,9 +1,7 @@
-import { Col, Layout, Row } from "antd";
+import { Col, Row } from "antd";
 import styles from "./Header.module.css";
 import SearchBar from "../SearchBar";
 import { Link } from "react-router-dom";
-
-const { Header: AntHeader } = Layout;
 
 interface HeaderProps {
   onSearchSubmit: (q: string) => void;
@@ -11,7 +9,7 @@ interface HeaderProps {
 
 const Header = ({ onSearchSubmit }: HeaderProps) => {
   return (
-    <AntHeader className={styles.header}>
+    <header className={styles.header}>
       <Row align="middle" justify="space-between" style={{ flex: 1 }}>
         <Col xs={24} sm={8}>
           <Link to="/">
@@ -20,7 +18,7 @@ const Header = ({ onSearchSubmit }: HeaderProps) => {
         </Col>
         <SearchBar onSubmit={onSearchSubmit} />
       </Row>
-    </AntHeader>
+    </header>
   );
 };
 
