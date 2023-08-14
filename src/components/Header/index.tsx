@@ -16,7 +16,9 @@ const Header = ({ onSearchSubmit }: HeaderProps) => {
             <h1 className={styles.title}>Weather App</h1>
           </Link>
         </Col>
-        <SearchBar onSubmit={onSearchSubmit} />
+        <Col xs={24} sm={12} md={9} lg={6}>
+          <SearchBar onSubmit={onSearchSubmit} />
+        </Col>
       </Row>
     </header>
   );
