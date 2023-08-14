@@ -1,11 +1,18 @@
 import styles from "./Statistic.module.css";
 
+interface StatisticProps {
+  title: string;
+  value: number;
+  suffix: string;
+  suffixIsSuperscript?: boolean;
+}
+
 const Statistic = ({
   title,
   value,
   suffix,
-  suffixIsSuperscript = false,
-}: any) => {
+  suffixIsSuperscript,
+}: StatisticProps) => {
   return (
     <div className={styles.statistic}>
       <span className={styles.statisticTitle}>{title}</span>

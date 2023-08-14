@@ -1,4 +1,3 @@
-import React from "react";
 import { Card, Col, Divider, Row, Space } from "antd";
 import styles from "../../common/Styles.module.css";
 import Statistic from "../../components/Statistic";

@@ -8,10 +8,10 @@ interface WeatherListProps {
 }
 
 const WeatherList = ({ data }: WeatherListProps) => {
-  const [expanded, setExpanded] = useState(data[0].date);
+  const [expandedDate, setExpandedDate] = useState(data[0].date);
 
   const toggleExpand = (text: string) => {
-    setExpanded(text);
+    setExpandedDate(text);
   };
 
   return (
@@ -19,13 +19,14 @@ const WeatherList = ({ data }: WeatherListProps) => {
       {data.map((item) => (
         <WeatherCard
           key={item.date}
-          header={item.date}
-          iconSrc={item.day.condition.icon}
-          highTemp="31"
-          lowTemp="27"
-          precipitation="12"
-          expandedText={expanded}
-          toggleExpand={toggleExpand}
+          date={item.date}
+          conditionIcon={item.day.condition.icon}
+          conditionText={item.day.condition.text}
+          maxTemp={item.day.maxtemp_c}
+          minTemp={item.day.mintemp_c}
+          totalPrecip={item.day.totalprecip_mm}
+          expanded={expandedDate === item.date}
+          toggleExpand={() => toggleExpand(item.date)}
         />
       ))}
     </Space>

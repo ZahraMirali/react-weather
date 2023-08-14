@@ -1,6 +1,6 @@
 import { Alert } from "antd";
 import { Route, Routes } from "react-router-dom";
-import { EnvironmentOutlined } from "@ant-design/icons";
+import { IoLocationOutline } from "react-icons/io5";
 import { selectData, selectError } from "../../store/weather/selectors";
 import { useSelector } from "react-redux";
 import HomePage from "../../pages/Home";
@@ -28,7 +28,7 @@ const Content = () => {
   return (
     <>
       <div className={styles.location}>
-        <EnvironmentOutlined className={styles.locationIcon} />
+        <IoLocationOutline className={styles.locationIcon} />
         {weatherData.location.name}, {weatherData.location.country}
       </div>
       <Routes>

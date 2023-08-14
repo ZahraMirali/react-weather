@@ -32,7 +32,7 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
     } catch (error) {
       messageApi.open({
         type: "error",
-        content: "Error fetching suggestions",
+        content: "Error fetching locations",
       });
     }
   }
