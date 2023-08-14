@@ -10,7 +10,7 @@ interface HeaderProps {
 const Header = ({ onSearchSubmit }: HeaderProps) => {
   return (
     <header className={styles.header}>
-      <Row align="middle" justify="space-between" style={{ flex: 1 }}>
+      <Row className={styles.row}>
         <Col xs={24} sm={8}>
           <Link to="/">
             <h1 className={styles.title}>Weather App</h1>

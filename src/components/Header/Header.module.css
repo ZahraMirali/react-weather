@@ -5,6 +5,11 @@
   margin-bottom: 1.25rem;
 }
 
+.header .row {
+  flex: 1;
+  justify-content: space-between;
+}
+
 .title {
   color: #f5f5f5;
   font-size: 1.5rem;
