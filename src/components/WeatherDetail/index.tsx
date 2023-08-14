@@ -3,11 +3,38 @@ import styles from "../../common/Styles.module.css";
 import Statistic from "../../components/Statistic";
 
 interface WeatherDetailProps {
-  date: any;
-  day: any;
+  date: string;
+  conditionIcon: string;
+  conditionText: string;
+  maxTemp: number;
+  minTemp: number;
+  totalPrecip: number;
+  avgTemp: number;
+  maxWind: number;
+  avgHumidity: number;
+  avgVis: number;
+  uv: number;
+  totalSnow: number;
+  dailyChanceOfSnow: number;
+  dailyChanceOfRain: number;
 }
 
-const WeatherDetail = ({ date, day }: WeatherDetailProps) => {
+const WeatherDetail = ({
+  date,
+  conditionIcon,
+  conditionText,
+  maxTemp,
+  minTemp,
+  totalPrecip,
+  avgTemp,
+  maxWind,
+  avgHumidity,
+  avgVis,
+  uv,
+  totalSnow,
+  dailyChanceOfSnow,
+  dailyChanceOfRain,
+}: WeatherDetailProps) => {
   return (
     <Card className={styles.weatherBox}>
       <span>{date}</span>
@@ -16,66 +43,67 @@ const WeatherDetail = ({ date, day }: WeatherDetailProps) => {
         <img
           width={72}
           height={72}
-          alt={day.condition.text}
-          src={day.condition.icon}
+          alt={conditionText}
+          title={conditionText}
+          src={conditionIcon}
         />
         <Statistic
           title="Temperature"
-          value={day.avgtemp_c}
+          value={avgTemp}
           suffix="°C"
           suffixIsSuperscript={true}
         />
         <Space direction="vertical">
           <Statistic
             title="Max"
-            value={day.maxtemp_c}
+            value={maxTemp}
             suffix="°C"
             suffixIsSuperscript={true}
           />
           <Statistic
             title="Min"
-            value={day.mintemp_c}
+            value={minTemp}
             suffix="°C"
             suffixIsSuperscript={true}
           />
         </Space>
       </Row>
-      <p>{day.condition.text}</p>
+      <p>{conditionText}</p>
       <Row gutter={30}>
         <Col xs={24} sm={12}>
           <Row align="middle" justify="space-between">
             <h3>Wind</h3>
-            <p>{day.maxwind_kph} km/h</p>
+            <p>{maxWind} km/h</p>
           </Row>
           <Row align="middle" justify="space-between">
             <h3>UV Index</h3>
-            <p>{day.uv}</p>
+            <p>{uv}</p>
           </Row>
           <Row align="middle" justify="space-between">
             <h3>Humidity</h3>
-            <p>{day.avghumidity}</p>
+            <p>{avgHumidity}</p>
           </Row>
           <Row align="middle" justify="space-between">
             <h3>Visibility</h3>
-            <p>{day.avgvis_km} km</p>
+            <p>{avgVis} km</p>
           </Row>
         </Col>
         <Col xs={24} sm={12}>
           <Row align="middle" justify="space-between">
             <h3>Precipitation</h3>
-            <p>{day.totalprecip_mm} mm</p>
+            <p>{totalPrecip} mm</p>
           </Row>
           <Row align="middle" justify="space-between">
             <h3>Snow</h3>
-            <p>{day.totalsnow_cm} cm</p>
+            <p>{totalSnow} cm</p>
           </Row>
           <Row align="middle" justify="space-between">
             <h3>Probability of Snow</h3>
-            <p>{day.daily_chance_of_snow}</p>
+            <p>{dailyChanceOfSnow}</p>
           </Row>
           <Row align="middle" justify="space-between">
             <h3>Probability of Rain</h3>
-            <p>{day.daily_chance_of_rain}</p>
+            <p>{dailyChanceOfRain}</p>
           </Row>
         </Col>
       </Row>

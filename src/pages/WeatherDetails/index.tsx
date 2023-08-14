@@ -13,7 +13,23 @@ const WeatherDetailsPage: React.FC = () => {
   return (
     <Space direction="vertical" style={{ display: "flex" }}>
       {data.map(({ date, day }) => (
-        <WeatherDetail key={date} day={day} date={date} />
+        <WeatherDetail
+          key={date}
+          date={date}
+          conditionIcon={day.condition.icon}
+          conditionText={day.condition.text}
+          maxTemp={day.maxtemp_c}
+          minTemp={day.mintemp_c}
+          totalPrecip={day.totalprecip_mm}
+          avgTemp={day.avgtemp_c}
+          maxWind={day.maxwind_kph}
+          avgHumidity={day.avghumidity}
+          avgVis={day.avgvis_km}
+          uv={day.uv}
+          totalSnow={day.totalsnow_cm}
+          dailyChanceOfSnow={day.daily_chance_of_snow}
+          dailyChanceOfRain={day.daily_chance_of_rain}
+        />
       ))}
     </Space>
   );
