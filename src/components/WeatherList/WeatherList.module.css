@@ -1,0 +1,5 @@
+.list {
+  overflow-x: auto;
+  display: flex;
+  border-radius: 6px;
+}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Space } from "antd";
 import WeatherCard from "../WeatherCard";
 import { ForecastDay } from "../../types/weather";
+import styles from "./WeatherList.module.css";
 
 interface WeatherListProps {
   data: ForecastDay[];
@@ -15,7 +16,7 @@ const WeatherList = ({ data }: WeatherListProps) => {
   };
 
   return (
-    <Space style={{ overflowX: "auto", display: "flex", borderRadius: "6px" }}>
+    <Space className={styles.list}>
       {data.map((item) => (
         <WeatherCard
           key={item.date}

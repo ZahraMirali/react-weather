@@ -1,5 +1,4 @@
 import React from "react";
-import { Space } from "antd";
 import { useSelector } from "react-redux";
 import { selectData } from "../../store/weather/selectors";
 import WeatherDetail from "../../components/WeatherDetail";
@@ -11,7 +10,7 @@ const WeatherDetailsPage: React.FC = () => {
   const data = weatherData.forecast.forecastday;
 
   return (
-    <Space direction="vertical" style={{ display: "flex" }}>
+    <div>
       {data.map(({ date, day }) => (
         <WeatherDetail
           key={date}
@@ -31,7 +30,7 @@ const WeatherDetailsPage: React.FC = () => {
           dailyChanceOfRain={day.daily_chance_of_rain}
         />
       ))}
-    </Space>
+    </div>
   );
 };
 

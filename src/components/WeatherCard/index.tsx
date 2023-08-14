@@ -1,6 +1,6 @@
 import { Button } from "antd";
-import styles from "./WeatherCard.module.css";
 import { IoWaterSharp } from "react-icons/io5";
+import styles from "./WeatherCard.module.css";
 
 interface WeatherCardProps {
   date: string;
@@ -36,10 +36,8 @@ const WeatherCard = ({
         <div className={styles.expandBox}>
           <div>{maxTemp}°</div>
           <div>{minTemp}°</div>
-          <div title="Precipitation">
-            <span>
-              <IoWaterSharp />
-            </span>
+          <div>
+            <IoWaterSharp />
             <span>{totalPrecip}%</span>
           </div>
         </div>
