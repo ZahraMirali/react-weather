@@ -1,9 +1,9 @@
 import React from "react";
 import { Card, Col, Divider, Row, Space } from "antd";
 import { useSelector } from "react-redux";
-import { selectData } from "../store/weather/selectors";
-import styles from "./WeatherDetailsPage.module.css";
-import Statistic from "../components/Statistic";
+import { selectData } from "../../store/weather/selectors";
+import styles from "./WeatherDetails.module.css";
+import Statistic from "../../components/Statistic";
 
 const WeatherDetailsPage: React.FC = () => {
   const weatherData = useSelector(selectData);

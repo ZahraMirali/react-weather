@@ -1,7 +1,6 @@
 import { Card, Col, Row, Space } from "antd";
 import styles from "./CurrentWeather.module.css";
-import Statistic from "./Statistic";
-import React from "react";
+import Statistic from "../Statistic";
 
 const CurrentWeather = ({ data, feelslike_c, pressure_mb }: any) => {
   const todayForecast = data.day;

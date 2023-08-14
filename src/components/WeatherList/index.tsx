@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Space } from "antd";
-import WeatherCard from "./WeatherCard";
-import { ForecastDay } from "../types/weather";
+import WeatherCard from "../WeatherCard";
+import { ForecastDay } from "../../types/weather";
 
 interface WeatherListProps {
   data: ForecastDay[];

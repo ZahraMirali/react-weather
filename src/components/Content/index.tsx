@@ -3,8 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import { EnvironmentOutlined } from "@ant-design/icons";
 import { selectData, selectError } from "../../store/weather/selectors";
 import { useSelector } from "react-redux";
-import HomePage from "../../pages/HomePage";
-import WeatherDetailsPage from "../../pages/WeatherDetailsPage";
+import HomePage from "../../pages/Home";
+import WeatherDetailsPage from "../../pages/WeatherDetails";
 import styles from "./Content.module.css";
 
 const Content = () => {

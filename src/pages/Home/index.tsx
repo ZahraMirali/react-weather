@@ -1,10 +1,10 @@
 import React from "react";
-import WeatherList from "../components/WeatherList";
-import CurrentWeather from "../components/CurrentWeather";
-import styles from "./HomePage.module.css";
+import WeatherList from "../../components/WeatherList";
+import CurrentWeather from "../../components/CurrentWeather";
+import styles from "./Home.module.css";
 import RightOutlined from "@ant-design/icons/RightOutlined";
 import { useSelector } from "react-redux";
-import { selectData } from "../store/weather/selectors";
+import { selectData } from "../../store/weather/selectors";
 import { Link } from "react-router-dom";
 
 const HomePage: React.FC = () => {
