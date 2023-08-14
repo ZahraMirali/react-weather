@@ -17,15 +17,11 @@ function App() {
   const loading = useSelector(selectLoading);
 
   useEffect(() => {
-    handleGeolocation();
-  }, []);
-
-  function handleGeolocation() {
     navigator.geolocation.getCurrentPosition(async (position) => {
       const { latitude, longitude } = position.coords;
-      getForecastWeather(`${latitude},${longitude}`);
+      dispatch(fetchForecastWeather(`${latitude},${longitude}`));
     });
-  }
+  }, [dispatch]);
 
   function getForecastWeather(q: string) {
     dispatch(fetchForecastWeather(q));
