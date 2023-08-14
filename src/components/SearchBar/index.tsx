@@ -11,7 +11,7 @@ interface SearchBarProps {
 
 export default function SearchBar({ onSubmit }: SearchBarProps) {
   const [searchValue, setSearchValue] = useState<string>("");
-  const [options, setOptions] = useState([]);
+  const [options, setOptions] = useState<LocationOption[]>([]);
   const [messageApi, contextHolder] = message.useMessage();
 
   async function handleSearch(value: string) {
