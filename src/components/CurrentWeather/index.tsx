@@ -1,12 +1,13 @@
 import { Card, Col, Row, Space } from "antd";
 import styles from "./CurrentWeather.module.css";
+import commonStyles from "../../common/Styles.module.css";
 import Statistic from "../Statistic";
 
 const CurrentWeather = ({ data, feelslike_c, pressure_mb }: any) => {
   const todayForecast = data.day;
 
   return (
-    <Card className={styles.currentWeatherCard}>
+    <Card className={commonStyles.weatherBox}>
       <div>
         <div className={styles.currentWeatherLabelAndDateBox}>
           <span className={styles.currentWeatherLabel}>Current weather</span>
