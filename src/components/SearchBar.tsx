@@ -26,7 +26,7 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
         (location: LocationInfo) => ({
           value: `${location.name}, ${location.country}`,
           coords: `${location.lat}, ${location.lon}`,
-        })
+        }),
       );
       setOptions(formattedSuggestions);
     } catch (error) {

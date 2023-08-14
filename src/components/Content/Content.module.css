@@ -2,11 +2,11 @@
   display: flex;
   flex-direction: column;
   background: transparent;
-  padding: 10px;
+  padding: 0.625rem;
 }
 
 .locationIcon {
-  margin-right: 5px;
+  margin-right: 0.313rem;
 }
 
 .location {
